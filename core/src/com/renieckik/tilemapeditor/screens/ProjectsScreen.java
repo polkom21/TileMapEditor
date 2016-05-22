@@ -9,7 +9,6 @@ public class ProjectsScreen extends AbstractScreen {
 	
 	public ProjectsScreen(TileMapEditor editor) {
 		super(editor);
-		// TODO Auto-generated constructor stub
 		testImg = new Texture("badlogic.jpg");
 	}
 	
