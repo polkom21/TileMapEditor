@@ -45,6 +45,7 @@ public abstract class AbstractScreen implements Screen {
 		clearScreen();
 		camera.update();
 		spriteBatch.setProjectionMatrix(camera.combined);
+		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 	}
 	
