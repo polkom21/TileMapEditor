@@ -12,10 +12,14 @@ import com.renieckik.tilemapeditor.entities.Project;
 public class ProjectsScreen extends AbstractScreen {
 	
 	private ArrayList<Project> projects;
+	private Json json;
+	private FileHandle file;
 	
 	public ProjectsScreen(TileMapEditor editor) {
 		super(editor);
 		
+		json = new Json();
+		file = Gdx.files.absolute(TileMapEditor.programDir+"projects.json");
 		projects = new ArrayList<Project>();
 		loadProjectsList();
 		
@@ -24,9 +28,6 @@ public class ProjectsScreen extends AbstractScreen {
 	
 	@SuppressWarnings("unchecked")
 	private void loadProjectsList() {
-		Json json = new Json();
-		FileHandle file = Gdx.files.absolute(TileMapEditor.programDir+"projects.json");
-		
 		if(!file.exists())
 			writeProjectsList();
 		
@@ -34,9 +35,6 @@ public class ProjectsScreen extends AbstractScreen {
 	}
 	
 	private void writeProjectsList() {
-		Json json = new Json();
-		FileHandle file = Gdx.files.absolute(TileMapEditor.programDir+"projects.json");
-		
 		String data = json.toJson(projects, ArrayList.class, Project.class);
 		
 		file.writeString(data, false);
