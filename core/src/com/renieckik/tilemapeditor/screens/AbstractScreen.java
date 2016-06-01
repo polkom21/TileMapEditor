@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.renieckik.tilemapeditor.TileMapEditor;
 
@@ -16,6 +17,7 @@ public abstract class AbstractScreen implements Screen {
 	protected Stage stage;
 	private OrthographicCamera camera;
 	protected SpriteBatch spriteBatch;
+	protected Skin skin;
 	
 	public AbstractScreen(TileMapEditor editor) {
 		this.editor = editor;
@@ -23,6 +25,8 @@ public abstract class AbstractScreen implements Screen {
 		stage = new Stage(new ScreenViewport(camera));
 		spriteBatch = new SpriteBatch();
 		Gdx.input.setInputProcessor(stage);
+		
+		skin = new Skin(Gdx.files.internal("uiskin.json"));
 	}
 	
 	private void createCamera() {

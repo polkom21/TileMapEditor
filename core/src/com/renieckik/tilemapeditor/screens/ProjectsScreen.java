@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
-import com.kotcrab.vis.ui.VisUI;
 import com.renieckik.tilemapeditor.TileMapEditor;
 import com.renieckik.tilemapeditor.entities.Project;
 
@@ -22,8 +21,6 @@ public class ProjectsScreen extends AbstractScreen {
 		file = Gdx.files.absolute(TileMapEditor.programDir+"projects.json");
 		projects = new ArrayList<Project>();
 		loadProjectsList();
-		
-		VisUI.load();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -49,7 +46,6 @@ public class ProjectsScreen extends AbstractScreen {
 	
 	@Override
 	public void dispose() {
-		VisUI.dispose();
 	}
 
 }
