@@ -18,7 +18,7 @@ import com.badlogic.gdx.utils.Json;
 import com.renieckik.tilemapeditor.TileMapEditor;
 import com.renieckik.tilemapeditor.entities.Project;
 
-public class ProjectsScreen extends AbstractScreen {
+public class ProjectsListScreen extends AbstractScreen {
 	
 	private ArrayList<Project> projects;
 	private Array<String> projectsNames;
@@ -28,7 +28,7 @@ public class ProjectsScreen extends AbstractScreen {
 	private TextButton newProject, openProject, deleteProject;
 	private List<String> projectsList;
 	
-	public ProjectsScreen(TileMapEditor editor) {
+	public ProjectsListScreen(TileMapEditor editor) {
 		super(editor);
 		
 		json = new Json();
