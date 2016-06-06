@@ -28,7 +28,7 @@ public class ProjectsListScreen extends AbstractScreen {
 	private TextButton newProject, openProject, deleteProject;
 	private List<String> projectsList;
 	
-	public ProjectsListScreen(TileMapEditor editor) {
+	public ProjectsListScreen(final TileMapEditor editor) {
 		super(editor);
 		
 		json = new Json();
@@ -66,7 +66,7 @@ public class ProjectsListScreen extends AbstractScreen {
 		openProject.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				// TODO Open new screen with project view
+				editor.setScreen(new ProjectViewScreen(editor, projects.get(projectsList.getSelectedIndex())));
 			}
 		});
 		
