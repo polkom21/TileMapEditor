@@ -13,13 +13,12 @@ public class ProjectViewScreen extends AbstractScreen {
 		super(editor);
 		this.project = project;
 		
-		gui = new Gui();
+		gui = new Gui(this.stage);
 	}
 	
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		gui.draw();
 	}
 
 }
