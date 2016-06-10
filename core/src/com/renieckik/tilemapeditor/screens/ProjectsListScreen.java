@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
@@ -27,7 +28,7 @@ public class ProjectsListScreen extends AbstractScreen {
 	private Json json;
 	private FileHandle file;
 	private Table container;
-	private TextButton newProject, openProject, deleteProject;
+	private TextButton newProject, openProject, deleteProject, exitApp;
 	private List<String> projectsList;
 	
 	public ProjectsListScreen(final TileMapEditor editor) {
@@ -43,7 +44,7 @@ public class ProjectsListScreen extends AbstractScreen {
 		container.setFillParent(true);
 		stage.addActor(container);
 		
-		container.add(new Label("List of projects", skin)).colspan(3).growX();
+		container.add(new Label("List of projects", skin)).colspan(4).growX();
 		container.row();
 		
 		projectsList = new List<String>(skin);
@@ -58,7 +59,7 @@ public class ProjectsListScreen extends AbstractScreen {
 			}
 		});
 		
-		container.add(projectsList).colspan(3).grow();
+		container.add(projectsList).colspan(4).grow();
 		container.row();
 		
 		newProject = new TextButton("New project", skin);
@@ -82,7 +83,7 @@ public class ProjectsListScreen extends AbstractScreen {
 		});
 		
 		deleteProject = new TextButton("Delete project", skin);
-		container.add(deleteProject).align(Align.left);
+		container.add(deleteProject);
 		
 		deleteProject.addListener(new ChangeListener() {
 			@Override
@@ -94,6 +95,16 @@ public class ProjectsListScreen extends AbstractScreen {
 					projects.remove(selectedProject);
 					writeProjectsList();
 				}
+			}
+		});
+		
+		exitApp = new TextButton("Exit editor", skin);
+		container.add(exitApp).align(Align.left);
+		
+		exitApp.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				Gdx.app.exit();
 			}
 		});
 	}
