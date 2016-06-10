@@ -6,14 +6,16 @@ import com.renieckik.tilemapeditor.gui.Gui;
 
 public class ProjectViewScreen extends AbstractScreen {
 
+	public TileMapEditor editor;
 	private Project project;
 	private Gui gui;
 
 	public ProjectViewScreen(final TileMapEditor editor, Project project) {
 		super(editor);
+		this.editor = editor;
 		this.project = project;
 		
-		gui = new Gui(this.stage);
+		gui = new Gui(this.stage, this);
 	}
 	
 	@Override
